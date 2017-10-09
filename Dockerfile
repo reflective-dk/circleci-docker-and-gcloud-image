@@ -10,7 +10,6 @@ RUN apk update && apk add --no-cache \
 
 RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz
 RUN mkdir -p /usr/local/gcloud
-RUN tar -C /usr/local/gcloud -xvf google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz
+RUN tar -C /usr/local/gcloud -xf google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz
 RUN /usr/local/gcloud/google-cloud-sdk/install.sh -q
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
-RUN gcloud --help
