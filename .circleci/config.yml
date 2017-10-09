@@ -1,0 +1,17 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: docker:17.05.0-ce-git
+    steps:
+      - checkout
+      - run:
+          name: Build Docker image
+          command: |
+            docker build -t reflectivedk/circleci-docker-and-gcloud .
+      - deploy:
+          name: Push application Docker image
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              docker push reflectivedk/circleci-docker-and-gcloud
+            fi
