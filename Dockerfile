@@ -1,4 +1,11 @@
 FROM docker:17.05.0-ce-git
+
+RUN apk update && apk add --no-cache \
+  wget \
+  python \
+  curl \
+  curl-dev
+
 #INSTALL NODE START
 ENV NPM_CONFIG_LOGLEVEL info
 ENV NODE_VERSION 8.7.0
@@ -68,12 +75,6 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
 #INSTALL NODE END
 #INSTALL GCLOUD TOOLS START
 ENV GCLOUD_SDK_VERSION=174.0.0
-
-RUN apk update && apk add --no-cache \
-  wget \
-  python \
-  curl \
-  curl-dev
 
 RUN wget https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-sdk-${GCLOUD_SDK_VERSION}-linux-x86_64.tar.gz
 RUN mkdir -p /usr/local/gcloud
