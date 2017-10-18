@@ -52,11 +52,16 @@ RUN set -ex; \
 	dockerd -v; \
 	docker -v
 
+#add some tools
 RUN apk update && apk add --no-cache \
   wget \
+  openssh \
+  git \
   python \
   curl \
   curl-dev
+
+RUN npm i mocha -g
 
 #INSTALL GCLOUD TOOLS START
 ENV GCLOUD_SDK_VERSION=174.0.0
