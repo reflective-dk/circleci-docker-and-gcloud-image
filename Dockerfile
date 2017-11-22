@@ -54,6 +54,7 @@ RUN set -ex; \
 
 #add some tools
 RUN apk update && apk add --no-cache \
+  jq \
   wget \
   openssh \
   git \
