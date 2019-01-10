@@ -60,7 +60,8 @@ RUN apk update && apk add --no-cache \
   git \
   python \
   curl \
-  curl-dev
+  curl-dev \
+  make
 
 RUN npm i mocha -g
 
