@@ -54,14 +54,15 @@ RUN set -ex; \
 
 #add some tools
 RUN apk update && apk add --no-cache \
+  make \
+  g++ \
   jq \
   wget \
   openssh \
   git \
   python \
   curl \
-  curl-dev \
-  make
+  curl-dev
 
 RUN npm i mocha -g
 
