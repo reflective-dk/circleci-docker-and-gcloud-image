@@ -1,4 +1,4 @@
-#/bin/sh
+#!/bin/sh
 imageName=$1
 deployment=$1
 if [ $2 ]
