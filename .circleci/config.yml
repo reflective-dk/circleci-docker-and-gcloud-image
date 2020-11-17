@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: reflectivedk/circleci-docker-and-gcloud
+      - image: eu.gcr.io/city-7337/circleci-docker-and-gcloud
     steps:
       - checkout
       #- add_ssh_keys
