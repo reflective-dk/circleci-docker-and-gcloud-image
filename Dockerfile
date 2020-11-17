@@ -80,4 +80,5 @@ ADD setImageToLatestDigest.sh /bin/setImageToLatestDigest.sh
 
 #ADD SCRIPTS START
 RUN chmod a+x /bin/setImageToLatestDigest.sh
+RUN chmod a+x /bin/setImageToLatestDigestEU.sh
 #ADD SCRIPTS END
