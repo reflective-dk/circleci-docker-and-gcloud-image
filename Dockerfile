@@ -76,6 +76,7 @@ RUN /usr/local/gcloud/google-cloud-sdk/install.sh -q
 ENV PATH $PATH:/usr/local/gcloud/google-cloud-sdk/bin
 RUN gcloud components install kubectl -q
 ADD setImageToLatestDigest.sh /bin/setImageToLatestDigest.sh
+ADD setImageToLatestDigestEU.sh /bin/setImageToLatestDigestEU.sh
 #INSTALL GCLOUD TOOLS END
 
 #ADD SCRIPTS START
