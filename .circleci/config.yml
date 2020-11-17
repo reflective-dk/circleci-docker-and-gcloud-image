@@ -2,23 +2,18 @@ version: 2
 jobs:
   build:
     docker:
-      - image: eu.gcr.io/city-7337/circleci-docker-and-gcloud
+      - image: docker:18.03.1-ce-git
     steps:
       - checkout
-      #- add_ssh_keys
       - setup_remote_docker
       - run:
-          name: Authenticate gcloud
+          name: Build Docker image
           command: |
-            echo $GCLOUD_SERVICE_KEY | base64 -d > ${HOME}/gcloud-service-key.json
-            gcloud auth activate-service-account --key-file ${HOME}/gcloud-service-key.json
-      - run:
-          name: Build application Docker image
-          command: |
-            gcloud docker -- build -t eu.gcr.io/city-7337/circleci-docker-and-gcloud .
+            docker build -t reflectivedk/circleci-docker-and-gcloud .
       - deploy:
           name: Push application Docker image
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              gcloud docker -- push eu.gcr.io/city-7337/circleci-docker-and-gcloud
+              docker login -u $DOCKER_USER -p $DOCKER_PASS
+              docker push reflectivedk/circleci-docker-and-gcloud
             fi
